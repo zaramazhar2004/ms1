@@ -1,0 +1,7 @@
+.vs/
+x64/
+*.suo
+*.db
+*.ipch
+*.vcxproj.user
+*.slnx
