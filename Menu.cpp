@@ -17,7 +17,7 @@ using namespace std;
 namespace seneca {
 	//setting objects to safe empty states so they dont fail the checks
 	void MenuItem::setEmpty() {
-		m_contents =nullptr;
+		m_contents = nullptr;
 		m_indent = 0;
 		m_isize = 0;
 		m_row = -1;
@@ -27,7 +27,7 @@ namespace seneca {
 		setEmpty();	//start object but safe state
 		bool valid = true;	//assuming for loop 
 		// if/else statemts to invalid liek whitespaces or null pointers or side exceeding 4 and according to MaximumNumberOfMenuItems
-	
+
 		if (contents == nullptr) {
 			valid = false;
 		}
@@ -48,7 +48,7 @@ namespace seneca {
 			m_row = row;
 		}
 	}
-		//destructor releases memory 
+	//destructor releases memory 
 	MenuItem::~MenuItem() {
 		delete[] m_contents;
 	}
@@ -78,4 +78,44 @@ namespace seneca {
 		return ostr;   // returning stream to allow confiscading
 	}
 
+Menu::Menu(const char* menuTitle, const char* exit, size_t indent, size_t isize)
+	: m_indent(indent), m_isize(isize), m_numOfItems(0), m_menuTitle(menuTitle, indent, isize, -1), m_exit(exit, indent, isize, 0), m_selectPrompt("> ", indent, isize, -1) {
+
+	for (size_t i = 0; i < MaximumNumberOfMenuItems; i++) {
+		m_items[i] = nullptr;
+	}
+}
+Menu::~Menu() {
+	for (size_t i = 0; i < MaximumNumberOfMenuItems; i++) {
+		delete m_items[i];
+		m_items[i] = nullptr;
+	}
+}
+void Menu::displayAll() {
+	if (m_menuTitle) {
+		m_menuTitle.display() << endl;
+	}
+	for (size_t i = 0; i < m_numOfItems; i++) {
+		m_items[i]->display() << endl;
+	}
+	m_exit.display() << endl;
+	m_selectPrompt.display();
+}
+Menu& Menu::operator<<(const char* content) {
+	if (m_numOfItems < MaximumNumberOfMenuItems) {
+		m_items[m_numOfItems] = new MenuItem(content, m_indent, m_isize, int(m_numOfItems + 1));
+		m_numOfItems++;
+	}
+	return *this;
+}
+size_t Menu::select() const {
+	const_cast<Menu*>(this)->displayAll();
+	return ut.getInt(0, (int)m_numOfItems);
+}
+size_t operator<<(ostream& ostr, const Menu& menu) {
+	if (&ostr == &cout) {
+		return menu.select();
+	}
+	return 0;
+}
 }

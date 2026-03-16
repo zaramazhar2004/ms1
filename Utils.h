@@ -7,9 +7,7 @@
 // Description
 // utility function to be used in the project
 // Revision History
-// -----------------------------------------------------------
-// Name            Date            Reason
-//
+// All the code is not mine i am just editing to add some helper fucntions
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #ifndef SENECA_UTILS_H
@@ -23,6 +21,8 @@ namespace seneca {
       int strlen(const char* str)const;
       bool isspace(char ch)const;
       bool isspace(const char* cstring)const;
+      int getInt()const;
+      int getInt(int min, int max) const;
    };
    extern Utils ut;   // makes the ut object available where Utils.h is included
                      // to call a Utils function call it as follows

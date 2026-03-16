@@ -14,7 +14,9 @@ that my professor provided to complete my workshops and assignments.
 #include "constants.h"
 
 namespace seneca {
+	class Menu;
 	class MenuItem {
+		friend class Menu;
 		char* m_contents{}; //pointer for dynamic memory 
 		size_t m_indent{};  //indetation levels controlling 
 		size_t m_isize{};	//spaces per indentation
@@ -22,7 +24,7 @@ namespace seneca {
 		void setEmpty();	// using standard helper function for safe empty space
 
 	public:
-		MenuItem(const char* contents = nullptr, size_t indent = 0, size_t isize = 0, int row = -1);	//cosntructor to receive all properties
+		MenuItem(const char* contents, size_t indent, size_t isize, int row);	//cosntructor to receive all properties
 		~MenuItem();	//freeing dynamic memory according to the rule of three 
 		MenuItem(const MenuItem&) = delete;	//preventing copy constructor-end of three rule 
 		MenuItem& operator=(const MenuItem&) = delete; //no copy assignment 
@@ -31,5 +33,26 @@ namespace seneca {
 		std::ostream& display(std::ostream& ostr = std::cout) const;	// prints formatted 
 	
 	};
+	class Menu {
+		size_t m_indent{};
+		size_t m_isize{};
+		size_t m_numOfItems{};
+		MenuItem m_menuTitle;
+		MenuItem m_exit;
+		MenuItem m_selectPrompt;
+		MenuItem* m_items[MaximumNumberOfMenuItems]{};
+		void displayAll();
+	public:
+		Menu(const char* menuTitle, const char* exit = "Exit", size_t indent = 0, size_t isize = 3);
+		~Menu();
+		Menu(const Menu&) = delete;
+		Menu& operator=(const Menu&) = delete;
+		Menu& operator<<(const char* content);
+		size_t select() const;
+	};
+	size_t operator<<(std::ostream& ostr, const Menu& menu);
+
+
+
 }
 #endif // SENECA_MENU_H
