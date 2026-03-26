@@ -7,7 +7,7 @@
 // Description
 // utility function to be used in the project
 // Revision History
-// All the code is not mine i am just editing to add some helper fucntions
+// All the code is not mine i am just editing to add some helper fucntions for input validations
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #ifndef SENECA_UTILS_H
@@ -21,6 +21,8 @@ namespace seneca {
       int strlen(const char* str)const;
       bool isspace(char ch)const;
       bool isspace(const char* cstring)const;
+   
+      //These two are juts input validation functions
       int getInt()const;
       int getInt(int min, int max) const;
    };

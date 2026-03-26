@@ -1,8 +1,8 @@
 /* Citation and Sources...
-Final Project Milestone 1
+Final Project Milestone 2
 Filename: Menu.cpp
 Author: Zara Mazhar, StNo: 106537251, Email: zmazhar1@myseneca.ca
-Revision History: Done in one sitting 
+Revision History: Done in one sitting (March 13)
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code
 that my professor provided to complete my workshops and assignments.
@@ -77,45 +77,45 @@ namespace seneca {
 		}
 		return ostr;   // returning stream to allow confiscading
 	}
-
+	//allocating their functions
 Menu::Menu(const char* menuTitle, const char* exit, size_t indent, size_t isize)
 	: m_indent(indent), m_isize(isize), m_numOfItems(0), m_menuTitle(menuTitle, indent, isize, -1), m_exit(exit, indent, isize, 0), m_selectPrompt("> ", indent, isize, -1) {
 
 	for (size_t i = 0; i < MaximumNumberOfMenuItems; i++) {
-		m_items[i] = nullptr;
+		m_items[i] = nullptr;	//making sure all pointers are safe
 	}
 }
 Menu::~Menu() {
 	for (size_t i = 0; i < MaximumNumberOfMenuItems; i++) {
-		delete m_items[i];
+		delete m_items[i];		// deleting each MenuItem object and resetting pointer 
 		m_items[i] = nullptr;
 	}
 }
 void Menu::displayAll() {
 	if (m_menuTitle) {
-		m_menuTitle.display() << endl;
+		m_menuTitle.display() << endl;		//first priting menu title
 	}
 	for (size_t i = 0; i < m_numOfItems; i++) {
-		m_items[i]->display() << endl;
+		m_items[i]->display() << endl;		//then printeing all added items one at a time
 	}
-	m_exit.display() << endl;
+	m_exit.display() << endl;		//printing exit and the end prompt
 	m_selectPrompt.display();
 }
 Menu& Menu::operator<<(const char* content) {
-	if (m_numOfItems < MaximumNumberOfMenuItems) {
+	if (m_numOfItems < MaximumNumberOfMenuItems) {	// checking before adding to make sure array is not full yet
 		m_items[m_numOfItems] = new MenuItem(content, m_indent, m_isize, int(m_numOfItems + 1));
-		m_numOfItems++;
+		m_numOfItems++;		//row number allocating each next one will be count + 1
 	}
-	return *this;
+	return *this;		//returns that current menu for chaining to work
 }
 size_t Menu::select() const {
-	const_cast<Menu*>(this)->displayAll();
+	const_cast<Menu*>(this)->displayAll();		//showing full menu and valid choices 
 	return ut.getInt(0, (int)m_numOfItems);
 }
 size_t operator<<(ostream& ostr, const Menu& menu) {
 	if (&ostr == &cout) {
 		return menu.select();
 	}
-	return 0;
+	return 0;		//if not cout then do nothing and return 0
 }
 }

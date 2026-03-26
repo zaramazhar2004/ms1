@@ -3,13 +3,13 @@
 //
 // File	Utils.h
 // Version 0.1
-// started by Fardad
+// started by Fardad and completed by Zara Mazhar
 // Description
 // utility function to be used in the project
 // Revision History
-// -----------------------------------------------------------
-// Name            Date            Reason
-//
+First: 12 march
+second: 13 march 
+third: 16 march
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #include <iostream>
@@ -54,6 +54,7 @@ namespace seneca {
         }
         return cstring && *cstring == 0;
     }
+    //MS2 part
     int Utils::getInt() const {
         int user_Input{};
         while (true) {
