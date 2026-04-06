@@ -92,4 +92,30 @@ namespace seneca {
             }
         }
     }
+    char* Utils::makeBillFileName(char* generatedFileName, size_t currentBillNumber)const {
+        char temporaryBillFileName[21] = "bill_";
+        size_t copiedBillNumber = currentBillNumber;
+        int digitPosition = 5;
+        int totalLength;
+        do {
+            digitPosition++;
+            copiedBillNumber /= 10;
+        } while (copiedBillNumber > 0);
+        totalLength = digitPosition;
+        while (currentBillNumber > 0) {
+            temporaryBillFileName[--digitPosition] = (currentBillNumber % 10) + '0';
+            currentBillNumber /= 10;
+
+        }
+        if (temporaryBillFileName[digitPosition - 1] == '\0') {
+            temporaryBillFileName[--digitPosition] = '0';
+        }
+        for (int i = 0; ".txt"[i]; i++) {
+            temporaryBillFileName[totalLength++] = ".txt"[i];
+        }
+        temporaryBillFileName[totalLength] = '\0';
+        strcpy(generatedFileName, temporaryBillFileName);
+        return generatedFileName;
+    }
+
 }
