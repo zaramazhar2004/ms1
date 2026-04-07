@@ -30,10 +30,10 @@
     <ClCompile Include="Food.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ms4.cpp">
+    <ClCompile Include="Ordering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ordering.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,3 +1,15 @@
+/* Citation and Sources...
+Final Project Milestone 4
+Filename: Ordering.h
+Author: Zara Mazhar, StNo: 106537251, Email: zmazhar1@myseneca.ca
+Revision History:
+Ordering.h is done in one sitting.
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+*/
+
+
 #ifndef SENECA_ORDERING_H
 #define SENECA_ORDERING_H
 #include <iostream>
