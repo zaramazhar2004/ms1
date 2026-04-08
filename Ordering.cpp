@@ -1,5 +1,5 @@
 /* Citation and Sources...
-Final Project Milestone 5_3
+Final Project Milestone 5_4
 Filename: Ordering.cpp
 Author: Zara Mazhar, StNo: 106537251, Email: zmazhar1@myseneca.ca
 Revision History:
@@ -28,7 +28,7 @@ namespace seneca {
 		double totalWithTax = currentBillSubTotal + calculatedTax;
 		outputStream << fixed << setprecision(2);
 		outputStream << "                     Total: " << setw(12) << currentBillSubTotal << endl;
-		outputStream << "                     Tax:  " << setw(12) << calculatedTax << endl;
+		outputStream << "                     Tax: " << setw(12) << calculatedTax << endl;
 		outputStream << "                     Total+Tax:" << setw(9) << totalWithTax << endl;
 		outputStream << "========================================" << endl;
 	}
