@@ -1,6 +1,6 @@
 
 /* Citation and Sources...
-Final Project Milestone 5_4
+Final Project Milestone 5_5
 Filename: main.cpp
 Author: Zara Mazhar, StNo: 106537251, Email: zmazhar1@myseneca.ca
 Revision History:
@@ -52,6 +52,9 @@ while (true){
 	}
 	case 2:
 		orderSystem.printBill(cout);
+		break;
+	case 3:
+		orderSystem.resetBill();
 		break;
 
 	case 0:
