@@ -4,6 +4,7 @@
 // File	Utils.h
 // Version 0.1
 // started by Fardad 
+// edited by Zara Mazhar
 // Description
 // utility function to be used in the project
 // Revision History

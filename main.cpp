@@ -1,6 +1,6 @@
 
 /* Citation and Sources...
-Final Project Milestone 5_2
+Final Project Milestone 5_3
 Filename: main.cpp
 Author: Zara Mazhar, StNo: 106537251, Email: zmazhar1@myseneca.ca
 Revision History:
@@ -40,11 +40,15 @@ while (true){
 	case 1: {
 		size_t orderselection{};
 		while ((orderselection = orderingMenu.select()) != 0) {
-			if (orderselection == 2) {
+			if (orderselection == 1) {
+				orderSystem.orderFood();
+			}
+
+			else if (orderselection == 2) {
 				orderSystem.orderDrink();
 			}
 		}
-		break;
+				break;
 	}
 	case 0:
 		if (orderSystem.hasUnsavedBill()) {
